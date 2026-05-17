@@ -1,0 +1,214 @@
+/* ============================================
+   GAMEWORLD — STYLE.CSS
+   Estética: Clean dark magazine
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:      #0f0f0f;
+  --surface: #161616;
+  --card:    #1c1c1c;
+  --border:  #2a2a2a;
+  --accent:  #e8ff47;
+  --red:     #ff4757;
+  --blue:    #00b4d8;
+  --text:    #f0f0f0;
+  --muted:   #888;
+  --font-h:  'Bebas Neue', sans-serif;
+  --font-b:  'DM Sans', sans-serif;
+  --r:       10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-b); font-size: 15px; line-height: 1.7; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* ── Utilities ── */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+.tag {
+  display: inline-block; font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 3px 10px; border-radius: 3px; margin-bottom: 0.75rem;
+}
+.tag.red  { color: var(--red);  border-color: var(--red); }
+.tag.blue { color: var(--blue); border-color: var(--blue); }
+.section-head { margin-bottom: 2.5rem; }
+.section-head h2 { font-family: var(--font-h); font-size: clamp(2.5rem,5vw,4rem); letter-spacing:1px; line-height:1; }
+.section-head p  { color: var(--muted); max-width:520px; margin-top:0.5rem; }
+section { padding: 5rem 0; }
+
+/* ── NAVBAR ── */
+nav {
+  position: sticky; top: 0; z-index: 99;
+  background: rgba(15,15,15,0.93); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 58px; max-width: 1140px; margin: 0 auto; padding: 0 1.5rem;
+}
+.logo { font-family: var(--font-h); font-size: 1.6rem; letter-spacing: 2px; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.8rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero { background: var(--surface); border-bottom: 1px solid var(--border); padding: 5rem 0; position: relative; overflow: hidden; }
+.hero::after {
+  content: 'GAMES'; position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-h); font-size: 18rem; color: rgba(255,255,255,0.018);
+  pointer-events: none; white-space: nowrap; line-height: 1;
+}
+.hero-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-text h1 { font-family: var(--font-h); font-size: clamp(3.5rem,7vw,6.5rem); line-height: 0.95; letter-spacing: 1px; margin-bottom: 1.25rem; }
+.hero-text h1 em { font-style: normal; color: var(--accent); display: block; }
+.hero-text p { color: var(--muted); font-size: 1rem; max-width: 420px; margin-bottom: 2rem; }
+.hero-stats { display: flex; gap: 2.5rem; }
+.hstat-num { font-family: var(--font-h); font-size: 2.2rem; color: var(--accent); line-height: 1; }
+.hstat-label { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+.hero-img-wrap { border-radius: var(--r); overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--border); }
+.hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── HISTORIA (Timeline) ── */
+#historia { background: var(--bg); }
+.timeline { display: flex; flex-direction: column; position: relative; padding-left: 2.5rem; }
+.timeline::before { content:''; position:absolute; left:7px; top:0; bottom:0; width:2px; background:var(--border); }
+.tl-item { padding: 1.5rem 0; position: relative; display: grid; grid-template-columns: 110px 1fr; gap: 1.5rem; }
+.tl-dot {
+  width: 15px; height: 15px; border-radius: 50%; background: var(--accent);
+  border: 2px solid var(--bg); position: absolute; left: -2.17rem; top: 1.85rem;
+  box-shadow: 0 0 10px rgba(232,255,71,0.35);
+}
+.tl-year { font-family: var(--font-h); font-size: 2rem; color: var(--accent); line-height: 1.1; padding-top: 2px; }
+.tl-content h3 { font-family: var(--font-h); font-size: 1.25rem; letter-spacing: 0.5px; margin-bottom: 0.35rem; }
+.tl-content p { color: var(--muted); font-size: 0.85rem; }
+
+/* ── JUEGOS DESTACADOS ── */
+#juegos { background: var(--surface); }
+.games-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.game-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.game-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.game-thumb { aspect-ratio: 16/9; overflow: hidden; }
+.game-thumb img { width:100%; height:100%; object-fit:cover; transition: transform 0.4s; }
+.game-card:hover .game-thumb img { transform: scale(1.06); }
+.game-body { padding: 1rem 1.2rem 1.2rem; }
+.game-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+.genre-tag { font-size: 0.65rem; font-weight: 600; letter-spacing:1px; text-transform:uppercase; color: var(--muted); }
+.rating { font-family: var(--font-h); font-size: 1rem; color: var(--accent); }
+.game-body h3 { font-family: var(--font-h); font-size: 1.2rem; letter-spacing:0.5px; margin-bottom:0.4rem; }
+.game-body p { font-size: 0.82rem; color: var(--muted); line-height:1.5; }
+.game-platforms { margin-top: 0.75rem; font-size: 0.7rem; color: var(--muted); font-weight: 500; }
+
+/* ── CONSOLAS ── */
+#consolas { background: var(--bg); }
+.consolas-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+.consola-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem 1.25rem; text-align: center; transition: border-color 0.2s; }
+.consola-card:hover { border-color: var(--blue); }
+.consola-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.consola-card h3 { font-family: var(--font-h); font-size: 1.1rem; letter-spacing:1px; margin-bottom:0.3rem; }
+.consola-card .year { font-size: 0.75rem; color: var(--blue); font-weight: 600; margin-bottom: 0.5rem; }
+.consola-card p { font-size: 0.8rem; color: var(--muted); }
+
+/* ── TOP 5 ── */
+#top { background: var(--surface); }
+.top-list { display: flex; flex-direction: column; }
+.top-item {
+  display: grid; grid-template-columns: 64px 90px 1fr auto;
+  align-items: center; gap: 1.5rem;
+  padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+}
+.top-item:last-child { border-bottom: none; }
+.top-num { font-family: var(--font-h); font-size: 2.8rem; color: var(--border); line-height:1; text-align:right; }
+.top-item:first-child .top-num { color: var(--accent); }
+.top-img { width:90px; height:60px; object-fit:cover; border-radius:6px; border:1px solid var(--border); }
+.top-info h3 { font-family: var(--font-h); font-size: 1.2rem; letter-spacing:0.5px; margin-bottom:2px; }
+.top-info span { font-size: 0.75rem; color: var(--muted); }
+.top-score { font-family: var(--font-h); font-size: 1.8rem; color: var(--accent); }
+
+/* ── GÉNEROS ── */
+#generos { background: var(--bg); }
+.generos-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+.genero-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.genero-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.g-icon { font-size: 1.8rem; }
+.g-name { font-family: var(--font-h); font-size: 1.1rem; letter-spacing:1px; }
+.g-count { font-size: 0.72rem; color: var(--muted); }
+.g-desc { font-size: 0.8rem; color: var(--muted); line-height:1.5; }
+
+/* ── CURIOSIDADES ── */
+#curiosidades { background: var(--surface); }
+.curio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.curio-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; }
+.curio-num { font-family: var(--font-h); font-size: 3rem; color: var(--accent); line-height:1; margin-bottom:0.5rem; opacity:0.25; }
+.curio-card h3 { font-family: var(--font-h); font-size: 1.1rem; margin-bottom:0.5rem; }
+.curio-card p { font-size: 0.83rem; color: var(--muted); line-height:1.6; }
+
+/* ── NOTICIAS ── */
+#noticias { background: var(--bg); }
+.news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.news-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); overflow:hidden; transition: border-color 0.2s, transform 0.2s; }
+.news-card:hover { border-color: var(--red); transform: translateY(-4px); }
+.news-thumb { aspect-ratio: 16/9; overflow:hidden; }
+.news-thumb img { width:100%; height:100%; object-fit:cover; transition: transform 0.4s; }
+.news-card:hover .news-thumb img { transform: scale(1.05); }
+.news-body { padding: 1rem 1.2rem 1.2rem; }
+.news-date { font-size:0.7rem; color:var(--muted); margin-bottom:0.4rem; font-weight:500; }
+.news-body h3 { font-family: var(--font-h); font-size: 1.1rem; letter-spacing:0.5px; line-height:1.2; margin-bottom:0.5rem; }
+.news-body p { font-size: 0.82rem; color: var(--muted); }
+
+/* ── PLATAFORMAS DIGITALES ── */
+#plataformas { background: var(--surface); }
+.plat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.plat-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start;
+  transition: border-color 0.2s;
+}
+.plat-card:hover { border-color: var(--blue); }
+.plat-icon { font-size: 2.2rem; flex-shrink: 0; }
+.plat-info h3 { font-family: var(--font-h); font-size: 1.2rem; letter-spacing:1px; margin-bottom:0.3rem; }
+.plat-info .price { font-size: 0.75rem; color: var(--blue); font-weight:600; margin-bottom:0.5rem; }
+.plat-info p { font-size: 0.82rem; color: var(--muted); line-height:1.5; }
+
+/* ── FOOTER ── */
+footer { background: var(--card); border-top: 1px solid var(--border); padding: 2.5rem 0; }
+.footer-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: var(--font-h); font-size: 1.4rem; letter-spacing:2px; }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-size: 0.8rem; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-img-wrap { display: none; }
+  .games-grid, .curio-grid, .news-grid, .plat-grid { grid-template-columns: repeat(2,1fr); }
+  .consolas-grid, .generos-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 600px) {
+  .games-grid, .curio-grid, .news-grid, .plat-grid, .consolas-grid, .generos-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .top-item { grid-template-columns: 40px 1fr auto; }
+  .top-img { display: none; }
+}
